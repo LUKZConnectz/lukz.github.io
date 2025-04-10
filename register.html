@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>สมัครสมาชิก</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>สมัครสมาชิก</h2>
+    <form onsubmit="return registerSuccess(event)">
+      <input type="text" id="reg-username" placeholder="ชื่อผู้ใช้" required />
+      <input type="email" placeholder="อีเมล" required />
+      <input type="password" id="reg-pass" placeholder="รหัสผ่าน" required />
+      <input type="password" id="reg-pass-confirm" placeholder="ยืนยันรหัสผ่าน" required />
+      <button type="submit">สมัครสมาชิก</button>
+    </form>
+  </div>
+
+  <script>
+    function registerSuccess(event) {
+      event.preventDefault();
+
+      const username = document.getElementById('reg-username').value;
+      const password = document.getElementById('reg-pass').value;
+      const confirm = document.getElementById('reg-pass-confirm').value;
+
+      if (password !== confirm) {
+        Swal.fire({
+          icon: 'error',
+          title: 'รหัสผ่านไม่ตรงกัน',
+          text: 'โปรดลองใหม่อีกครั้ง'
+        });
+        return false;
+      }
+
+      Swal.fire({
+        title: 'กำลังสมัครสมาชิก...',
+        text: 'โปรดรอสักครู่',
+        icon: 'info',
+        showConfirmButton: false,
+        timer: 1500,
+        allowOutsideClick: false
+      });
+
+      setTimeout(() => {
+        Swal.fire({
+          title: `สมัครสมาชิกสำเร็จ!`,
+          text: `ยินดีต้อนรับ ${username}`,
+          icon: 'success',
+          confirmButtonText: 'ไปหน้าแรก'
+        }).then(() => {
+          window.location.href = "index.html";
+        });
+      }, 1600);
+
+      return false;
+    }
+  </script>
+</body>
+</html>
