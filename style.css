@@ -1,0 +1,131 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+}
+
+/* Header */
+header {
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #0097ff;
+  margin-right: 20px;
+}
+
+nav {
+  display: flex;
+  gap: 15px;
+  flex-grow: 1;
+  justify-content: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding: 8px 10px;
+  transition: color 0.2s;
+}
+
+nav a:hover {
+  color: #0097ff;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.auth-buttons a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.login {
+  color: #333;
+}
+
+.register {
+  background-color: #0097ff;
+  color: #fff;
+}
+
+/* Banner */
+.banner {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  font-size: 40px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Info Boxes */
+.info-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.box {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 200px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.icon {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.number {
+  color: #0097ff;
+  font-weight: bold;
+}
+
+/* Announce */
+.announce-bar {
+  background: #fff;
+  margin: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.announce-btn {
+  background-color: #0097ff;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
