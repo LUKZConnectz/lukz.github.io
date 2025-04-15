@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>เติมเงิน</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>เติมเงิน</h2>
+    <p>ยอดเงินปัจจุบัน: <span id="currentBalance">0</span> บาท</p>
+    <form onsubmit="return topUp(event)">
+      <input type="number" id="amount" placeholder="จำนวนเงิน (บาท)" required min="1" />
+      <button type="submit">เติมเงิน</button>
+    </form>
+  </div>
+
+  <script>
+    // โหลดยอดเงินจาก localStorage
+    function updateBalance() {
+      const balance = localStorage.getItem('balance') || 0;
+      document.getElementById('currentBalance').textContent = parseInt(balance).toLocaleString();
+    }
+
+    function topUp(event) {
+      event.preventDefault();
+      const input = document.getElementById('amount');
+      const amount = parseInt(input.value);
+
+      if (amount <= 0 || isNaN(amount)) {
+        Swal.fire({
+          icon: 'error',
+          title: 'จำนวนเงินไม่ถูกต้อง',
+          text: 'โปรดกรอกจำนวนมากกว่า 0'
+        });
+        return false;
+      }
+
+      let balance = parseInt(localStorage.getItem('balance') || 0);
+      balance += amount;
+      localStorage.setItem('balance', balance);
+
+      Swal.fire({
+        icon: 'success',
+        title: 'เติมเงินสำเร็จ!',
+        text: `คุณได้เติมเงิน ${amount.toLocaleString()} บาท`,
+        confirmButtonText: 'ตกลง'
+      }).then(() => {
+        input.value = '';
+        updateBalance();
+      });
+
+      return false;
+    }
+
+    updateBalance();
+  </script>
+</body>
+</html>
