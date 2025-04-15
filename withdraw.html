@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ถอนเงิน</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <div class="login-container">
+    <h2>ถอนเงิน</h2>
+    <p>ยอดเงินปัจจุบัน: <span id="currentBalance">0</span> บาท</p>
+    <form onsubmit="return withdrawMoney(event)">
+      <input type="number" id="withdrawAmount" placeholder="จำนวนเงินที่ต้องการถอน (บาท)" required min="1" />
+      <button type="submit">ถอนเงิน</button>
+    </form>
+  </div>
+
+  <script>
+    function updateBalanceDisplay() {
+      const balance = parseInt(localStorage.getItem("balance")) || 0;
+      document.getElementById("currentBalance").textContent = balance.toLocaleString();
+    }
+
+    function withdrawMoney(event) {
+      event.preventDefault();
+
+      const amount = parseInt(document.getElementById("withdrawAmount").value);
+      let balance = parseInt(localStorage.getItem("balance")) || 0;
+
+      if (isNaN(amount) || amount <= 0) {
+        Swal.fire("จำนวนไม่ถูกต้อง", "กรุณากรอกจำนวนเงินให้ถูกต้อง", "error");
+        return false;
+      }
+
+      if (amount > balance) {
+        Swal.fire("ยอดเงินไม่พอ", `คุณมีเพียง ${balance.toLocaleString()} บาท`, "error");
+        return false;
+      }
+
+      balance -= amount;
+      localStorage.setItem("balance", balance);
+
+      Swal.fire("ถอนเงินสำเร็จ", `คุณได้ถอน ${amount.toLocaleString()} บาท`, "success").then(() => {
+        document.getElementById("withdrawAmount").value = "";
+        updateBalanceDisplay();
+      });
+
+      return false;
+    }
+
+    updateBalanceDisplay();
+  </script>
+</body>
+</html>
