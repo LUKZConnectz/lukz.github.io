@@ -1,0 +1,46 @@
+:root {
+  --purple: #5a42ec;
+  --purple-soft: #efefff;
+  --text: #14141d;
+  --muted: #9b9aa5;
+  --line: #e7e7ec;
+  --bg: #fbfbfd;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font-family: "Noto Sans Thai", system-ui, sans-serif; }
+.shell { min-height: 100vh; display: grid; grid-template-columns: 274px 1fr; }
+.sidebar { position: sticky; top: 0; height: 100vh; background: #fff; border-right: 1px solid #e6e6ee; padding: 32px 18px 16px; display: flex; flex-direction: column; box-shadow: 4px 0 14px rgb(35 35 70 / 5%); }
+.brand { display: flex; align-items: center; gap: 14px; padding: 0 18px 52px; font-size: 26px; font-weight: 800; }
+.brand-mark { color: var(--purple); transform: rotate(-12deg); }
+.nav { flex: 1; overflow: hidden; }
+.nav section { margin-bottom: 26px; }
+.nav h2 { color: var(--muted); font-size: 16px; margin: 0 0 10px 25px; font-weight: 800; }
+.nav-item { height: 44px; border-radius: 24px; display: flex; align-items: center; gap: 18px; padding: 0 20px; margin: 6px 0; text-decoration: none; color: var(--muted); font-size: 19px; font-weight: 600; }
+.nav-item.active { background: #eeeeff; color: var(--purple); font-weight: 800; }
+.chev { margin-left: auto; }
+.account-card { display: flex; align-items: center; gap: 14px; border: 1px solid var(--line); border-radius: 24px; padding: 12px; box-shadow: 0 2px 11px rgb(0 0 0 / 5%); color: #9a99a2; }
+.avatar { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: #f4f4f7; font-size: 30px; }
+.account-card strong, .account-card span { display:block; } .account-card strong { color: #171720; font-size: 20px; } .account-card svg { margin-left:auto; }
+.content { padding: 36px 34px 48px; }
+.topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom: 54px; }
+.title { display:flex; align-items:center; gap:16px; }
+.title span { width:58px; height:58px; display:grid; place-items:center; border-radius:22px; background:#f0efff; color:var(--purple); box-shadow:0 4px 10px rgb(0 0 0 / 10%); }
+h1 { font-size: 34px; margin:0; line-height:1; }
+.premium { border:0; border-radius:22px; background:var(--purple); color:#fff; padding:17px 25px; font-size:20px; font-weight:800; display:flex; gap:12px; align-items:center; box-shadow:0 6px 14px rgb(90 66 236 / 30%); }
+.tabs { display:flex; gap:42px; border-bottom:1px solid #ececf1; margin-bottom:42px; overflow:auto; }
+.tabs button { border:0; background:transparent; padding:0 0 18px; font:inherit; font-size:20px; font-weight:800; color:#a4a2aa; white-space:nowrap; }
+.tabs button.active { color:#16161e; border-bottom:4px solid #191921; }
+.stats-grid { display:grid; grid-template-columns: repeat(4, minmax(190px,1fr)); gap:22px; margin-bottom:34px; }
+.stat { min-height:122px; border:1px solid #dedee5; border-radius:29px; background:white; display:flex; align-items:center; gap:20px; padding:28px; position:relative; box-shadow:0 2px 5px rgb(0 0 0 / 10%); }
+.stat-icon { width:64px; height:64px; display:grid; place-items:center; border-radius:20px; background:#f0efff; color:#7060ee; flex:none; }
+.stat strong { font-size:34px; line-height:1; } .stat p { margin:5px 0 0; color:#a5a3ab; font-weight:800; white-space:pre-line; line-height:1.2; } .corner { position:absolute; right:26px; top:34px; color:#d7d6db; }
+.dashboard-grid { display:grid; grid-template-columns: minmax(420px, 1fr) 340px; gap:28px; }
+.panel { background:white; border:1px solid #dedee5; border-radius:34px; box-shadow:0 2px 5px rgb(0 0 0 / 9%); }
+.badges { min-height:500px; padding:42px; }
+.panel-head { display:flex; justify-content:space-between; align-items:center; } .panel h3 { margin:0; font-size:25px; display:flex; align-items:center; gap:14px; } .panel-head svg, .profile svg { color:var(--purple); } .panel-head a { color:#9e9ca5; font-weight:800; text-decoration:none; }
+.badges > p { margin:44px 0 48px; color:#7f7d86; font-size:20px; } .empty { color:#aaa9b1; display:flex; align-items:center; gap:14px; font-size:18px; font-weight:800; } .progress-label { margin-top:72px; color:#a7a6ae; font-weight:800; } .progress { margin-top:4px; height:12px; background:#f1f1f3; border-radius:10px; overflow:hidden; } .progress span { display:block; width:0; height:100%; background:var(--purple); }
+.side-panels { display:grid; gap:20px; align-content:start; }
+.discord, .profile { padding:32px; } .discord { display:grid; grid-template-columns:64px 1fr; gap:18px; } .discord-logo { width:64px; height:64px; display:grid; place-items:center; border-radius:18px; background:var(--purple); color:white; font-size:28px; } .discord p, .profile p { color:#9e9ca5; font-size:17px; margin:2px 0 0; } .discord button, .profile button { grid-column:1 / -1; margin-top:28px; height:54px; border:0; border-radius:20px; background:#5865f2; color:#fff; font:inherit; font-size:19px; font-weight:800; box-shadow:0 6px 14px rgb(88 101 242 / 25%); }
+.profile { min-height:210px; } .profile p { margin:38px 0; } .profile button { width:100%; margin:0; background:#f8f8fa; color:#171720; border:1px solid #e3e3e8; box-shadow:none; display:flex; align-items:center; justify-content:center; gap:10px; }
+@media (max-width: 1100px) { .shell { grid-template-columns: 88px 1fr; } .brand span, .nav h2, .nav-item span, .account-card div, .account-card svg { display:none; } .sidebar { padding-inline:14px; } .brand { padding-inline:14px; } .nav-item { justify-content:center; padding:0; } .stats-grid { grid-template-columns: repeat(2, 1fr); } .dashboard-grid { grid-template-columns:1fr; } }
+@media (max-width: 720px) { .shell { display:block; } .sidebar { position:static; width:100%; height:auto; } .content { padding:24px 16px; } .topbar { gap:20px; align-items:flex-start; flex-direction:column; margin-bottom:32px; } .stats-grid { grid-template-columns:1fr; } .badges { padding:28px; min-height:380px; } }
