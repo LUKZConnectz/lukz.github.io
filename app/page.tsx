@@ -2,6 +2,17 @@ import type React from "react";
 
 type IconName = "chart" | "eye" | "link" | "shield" | "user" | "palette" | "widget" | "music" | "settings" | "gem" | "sparkles" | "logout" | "external" | "chevron";
 
+type NavItem = {
+  label: string;
+  icon: IconName;
+  active?: boolean;
+};
+
+type NavSection = {
+  title: string;
+  items: NavItem[];
+};
+
 function Icon({ name, size = 24, className = "" }: { name: IconName; size?: number; className?: string }) {
   const paths: Record<IconName, React.ReactNode> = {
     chart: <><path d="M4 19V5" /><path d="M4 19h16" /><path d="M8 16V9" /><path d="M12 16V6" /><path d="M16 16v-4" /></>,
@@ -22,7 +33,7 @@ function Icon({ name, size = 24, className = "" }: { name: IconName; size?: numb
   return <svg className={className} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden>{paths[name]}</svg>;
 }
 
-const navSections = [
+const navSections: NavSection[] = [
   { title: "แดชบอร์ด", items: [{ label: "ภาพรวม", icon: "chart" as IconName, active: true }] },
   { title: "ปรับแต่ง", items: ["โปรไฟล์:user", "รูปลักษณ์:palette", "ลิงก์:link", "เหรียญตรา:shield", "วิดเจ็ต:widget", "เพลง:music"].map((value) => { const [label, icon] = value.split(":"); return { label, icon: icon as IconName }; }) },
   { title: "จัดการ", items: [{ label: "ตั้งค่า", icon: "settings" as IconName }] },
